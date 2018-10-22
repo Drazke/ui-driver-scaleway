@@ -5,27 +5,100 @@
 
     {{!-- An example input option --}}
     <div class="row box mt-20">
-      <h4>Instance Options</h4>
+      <h4>API Access</h4>
       <div class="row">
         <div class="col span-2 col-inline">
-          <label>CPUs</label>
+          <label>Organization</label>
         </div>
-
-        <div class="col span-1">
-          {{config.cpuCount}}
-        </div>
-        <div class="col span-3">
-          {{input-slider value=config.cpuCount valueMin=1 valueMax=32}}
+        <div class="col span-4">
+          {{input value=config.organization classNames="form-control" placeholder="Scaleway Organization ID"}}
         </div>
 
         <div class="col span-2 col-inline">
-          <label>Memory Size</label>
+          <label>Token</label>
         </div>
         <div class="col span-4">
-          <div class="input-group">
-            {{input-integer min=1 value=config.memorySize classNames="form-control"}}
-            <div class="input-group-addon bg-default">MB</div>
-          </div>
+          {{input value=config.token classNames="form-control" placeholder="Scaleway API Token"}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row box mt-20">
+      <h4>Instance</h4>
+      <div class="row">
+        <div class="col span-2 col-inline">
+          <label>Instance Name</label>
+        </div>
+        <div class="col span-4">
+          {{input value=config.name classNames="form-control" placeholder="Optionally specify the instance name"}}
+        </div>
+
+        <div class="col span-2 col-inline">
+          <label>Region</label>
+        </div>
+        <div class="col span-4">
+          {{input value=config.region classNames="form-control" placeholder="Specify the location (par1,ams1)"}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col span-2 col-inline">
+          <label>Image</label>
+        </div>
+        <div class="col span-4">
+          {{input value=config.image classNames="form-control" placeholder="Specify the image"}}
+        </div>
+
+        <div class="col span-2 col-inline">
+          <label>Type</label>
+        </div>
+        <div class="col span-4">
+          {{input value=config.commercialType classNames="form-control" placeholder="Specify the commercial type"}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col span-2 col-inline">
+          <label>Additional Volumes</label>
+        </div>
+        <div class="col span-4">
+          {{input value=config.volumes classNames="form-control" placeholder="Attach additional volume (e.g., 50G)"}}
+        </div>
+
+        <div class="col span-2 col-inline">
+          <label>Bootscript</label>
+        </div>
+        <div class="col span-4">
+          {{input value=config.bootscript classNames="form-control" placeholder="Specify the bootscript"}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row box mt-20">
+      <h4>Network</h4>
+      <div class="row">
+        <div class="col span-2 col-inline">
+          <label>IP Address</label>
+        </div>
+        <div class="col span-4">
+          {{input value=config.ip classNames="form-control" placeholder="Optionally specify the IP Address"}}
+        </div>
+
+        <div class="col span-2 col-inline">
+          <label>IPv6</label>
+        </div>
+        <div class="col span-4">
+          {{input type="checkbox" value=config.ipv6}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row box mt-20">
+      <h4>Debug</h4>
+      <div class="row">
+        <div class="col span-2 col-inline">
+          <label>Enable Debugging</label>
+        </div>
+        <div class="col span-4">
+          {{input type="checkbox" value=config.debug}}
         </div>
       </div>
     </div>

@@ -45,8 +45,17 @@ export default Ember.Component.extend(NodeDriver, {
     // bootstrap is called by rancher ui on 'init', you're better off doing your setup here rather then the init function to ensure everything is setup correctly
     let config = get(this, 'globalStore').createRecord({
       type: '%%DRIVERNAME%%Config',
-      cpuCount: 2,
-      memorySize: 2048,
+      commercialType: 'START1-XS',
+      region: '',
+      name: '',
+      debug: false,
+      image: 'ubuntu-xenial',
+      ip: '',
+      ipv6: false,
+      organization: '',
+      token: '',
+      volumes: '',
+      bootscript: '',
     });
 
     set(this, 'model.%%DRIVERNAME%%Config', config);
@@ -61,12 +70,28 @@ export default Ember.Component.extend(NodeDriver, {
       errors.push('Name is required');
     }
 
+    if ( !get(this, 'config.commercialType') ) {
+      errors.push('Specifying a %%DRIVERNAME%% Instance Type is required');
+    }
+
+    if ( !get(this, 'config.organization') ) {
+      errors.push('Specifying a %%DRIVERNAME%% Organization is required');
+    }
+
+    if ( !get(this, 'config.token') ) {
+      errors.push('Specifying a %%DRIVERNAME%% Token is required');
+    }
+
+    if ( !get(this, 'config.image') ) {
+      errors.push('Specifying a %%DRIVERNAME%% Image is required');
+    }
+
     // Add more specific errors
 
     // Check something and add an error entry if it fails:
-    if ( parseInt(get(this, 'config.memorySize'), defaultRadix) < defaultBase ) {
-      errors.push('Memory Size must be at least 1024 MB');
-    }
+    // if ( parseInt(get(this, 'config.memorySize'), defaultRadix) < defaultBase ) {
+    //   errors.push('Memory Size must be at least 1024 MB');
+    // }
 
     // Set the array of errors for display,
     // and return true if saving should continue.
